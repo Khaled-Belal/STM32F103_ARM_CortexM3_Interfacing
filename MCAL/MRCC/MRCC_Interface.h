@@ -67,7 +67,7 @@ ErrorState MRCC_InitSysClk(void) ;
 /*****************************************		PERIPHERAL ENABLE  	****************************************/
 /***************************************************************************************************************/
 
-ErrorState 	MRCC_voidEnablePeriphClock( u8 Copy_u8PeripheralId );
+ErrorState 	MRCC_EnuEnablePeriphClock( u8 Copy_u8PeripheralId );
 
 
 
@@ -81,7 +81,7 @@ ErrorState 	MRCC_voidEnablePeriphClock( u8 Copy_u8PeripheralId );
 /*****************************************		PERIPHERAL DISABLE  	****************************************/
 /***************************************************************************************************************/
 
-ErrorState 	MRCC_voidDisablePeriphClock( u8 Copy_u8PeripheralId );
+ErrorState 	MRCC_EnuDisablePeriphClock( u8 Copy_u8PeripheralId );
 
 
 

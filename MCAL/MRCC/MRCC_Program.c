@@ -165,7 +165,7 @@ ErrorState MRCC_InitSysClk(void)
 /*****************************************		PERIPHERAL CLK ENABLE  	****************************************/
 /***************************************************************************************************************/
 
-ErrorState	 MRCC_voidEnablePeriphClock( u8 Copy_u8PeripheralId ){
+ErrorState	 MRCC_EnuEnablePeriphClock( u8 Copy_u8PeripheralId ){
 
 	u8 Copy_u8BusId = Copy_u8PeripheralId/32 ;
 
@@ -185,11 +185,14 @@ ErrorState	 MRCC_voidEnablePeriphClock( u8 Copy_u8PeripheralId ){
 
 	    	Copy_u8PeripheralId = (Copy_u8PeripheralId % 64) ;
 
-	    	if (Copy_u8PeripheralId >= GPIOA_BIT )
+	    	if (Copy_u8PeripheralId >= GPIOA_BIT && Copy_u8PeripheralId <= GPIOG_BIT )
 
 	    		{	MRCC -> APB2ENR |= ( GPIO_BITS << GPIOA_BIT )    ;	}
 
-	    	else   	SET_BIT( MRCC -> APB2ENR , Copy_u8PeripheralId ) ;  break;
+	    	else
+	    		{	SET_BIT( MRCC -> APB2ENR , Copy_u8PeripheralId ) ;	}
+
+	    	break;
 
 	}
 
@@ -206,7 +209,7 @@ ErrorState	 MRCC_voidEnablePeriphClock( u8 Copy_u8PeripheralId ){
 /*****************************************		PERIPHERAL CLK DISABLE  	****************************************/
 /***************************************************************************************************************/
 
-ErrorState	 MRCC_voidDisablePeriphClock( u8 Copy_u8PeripheralId ){
+ErrorState	 MRCC_EnuDisablePeriphClock( u8 Copy_u8PeripheralId ){
 
 	u8 Copy_u8BusId = Copy_u8PeripheralId/32 ;
 
@@ -226,11 +229,14 @@ ErrorState	 MRCC_voidDisablePeriphClock( u8 Copy_u8PeripheralId ){
 
 		    	Copy_u8PeripheralId = (Copy_u8PeripheralId % 64)  ;
 
-		    	if (Copy_u8PeripheralId >= GPIOA_BIT )
+		    	if ( Copy_u8PeripheralId >= GPIOA_BIT && Copy_u8PeripheralId <= GPIOG_BIT )
 
 		    		    {	 MRCC -> APB2ENR  &= ~( GPIO_BITS << GPIOA_BIT )    ;	}
 
-		    	CLR_BIT( MRCC -> APB2ENR , Copy_u8PeripheralId ) ;  break;
+		    	else
+		    			{	CLR_BIT( MRCC -> APB2ENR , Copy_u8PeripheralId ) ; 	}
+
+		    	break;
 
 		}
 

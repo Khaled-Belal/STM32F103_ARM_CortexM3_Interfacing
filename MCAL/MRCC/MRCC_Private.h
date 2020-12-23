@@ -51,8 +51,8 @@ typedef struct
 
 
 #define GPIOA_BIT	2
-
-#define GPIO_BITS	0b111
+#define GPIOG_BIT	8
+#define GPIO_BITS	0b1111111
 
 
 
